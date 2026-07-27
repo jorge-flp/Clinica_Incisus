@@ -1,0 +1,531 @@
+/* ============================================================
+   STYLES.CSS - PÁGINA INICIAL / CARROSSEL (CLÍNICA INCISUS)
+   Totalmente Responsivo (Desktop, Tablet e Mobile)
+   ============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    background-color: #0f0f1e;
+    color: #fff;
+    font-size: 16px;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* ================= HEADER ================= */
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: rgba(15, 15, 30, 0.85);
+    backdrop-filter: blur(12px);
+}
+
+.logo {
+    font-family: "Orbitron", sans-serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 10px 20px rgba(20, 82, 83, 0.5);
+    text-decoration: none;
+}
+
+header nav ul {
+    display: flex;
+    gap: 32px;
+}
+
+header nav ul li {
+    cursor: pointer;
+    position: relative;
+    padding: 5px 0;
+}
+
+header nav ul li::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #00d9ff;
+    transition: width 0.4s ease;
+}
+
+header nav ul li:hover::after {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ================= CONTAINER PRINCIPAL ================= */
+
+.container {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    background: linear-gradient(135deg, #010115 30%, #0c0c40 100%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(63, 210, 215, 0.2) 10%, rgba(15, 15, 30, 0) 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(50px);
+    z-index: 1;
+    animation: pulse 3s infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+}
+
+/* ================= LISTA & ITENS DO CARROSSEL ================= */
+
+.list {
+    width: 85%;
+    max-width: 1200px;
+    min-height: 70vh;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.item {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(40px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease,
+        visibility .8s;
+}
+
+.item.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.profiss-img {
+    width: 45%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.profiss-img img {
+    max-width: 85%;
+    max-height: 70vh;
+    object-fit: contain;
+    filter: drop-shadow(0 0 30px rgba(0, 247, 255, .3));
+    pointer-events: none;
+}
+
+.content {
+    width: 50%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 10;
+}
+
+.profiss-tag {
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #00d9ff;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.profiss-name {
+    font-size: 3.8rem;
+    font-family: "Orbitron", sans-serif;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: 1.1rem;
+    color: #b8b8d0;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    text-decoration: none;
+    background: linear-gradient(90deg, #016e72, #2a5ca6);
+    color: #fff;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: .35s;
+    box-shadow: 0 0 15px rgba(1, 144, 148, .25);
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    background: linear-gradient(90deg, #019094, #3f7cff);
+    box-shadow: 0 0 25px rgba(0, 247, 255, .45);
+}
+
+.btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* ================= SETAS E INDICADORES ================= */
+
+.arrows {
+    position: absolute;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 50;
+    pointer-events: none;
+}
+
+.arrow-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .1);
+    border: 1px solid rgba(0, 247, 255, .3);
+    cursor: pointer;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    transition: 0.3s;
+}
+
+.arrow-btn:hover {
+    background-color: rgba(0, 247, 255, 0.2);
+    border-color: #00f7ff;
+    transform: scale(1.1);
+}
+
+.indicators {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    z-index: 20;
+}
+
+.numbers {
+    font-family: "Orbitron", sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.dots {
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 35px;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+.dot.active {
+    background-color: #00f7ff;
+    box-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+    width: 50px;
+}
+
+/* ================= CÍRCULOS DE FUNDO ================= */
+
+.tech-circle {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 247, 255, 0.2);
+    pointer-events: none;
+}
+
+.circle:nth-child(1) {
+    width: 200px;
+    height: 200px;
+    top: 10%;
+    left: 10%;
+    animation: floating 8s ease-in-out infinite;
+}
+
+.circle:nth-child(2) {
+    width: 300px;
+    height: 300px;
+    top: 60%;
+    left: 80%;
+    animation: floating 10s ease-in-out infinite reverse;
+}
+
+.circle:nth-child(3) {
+    width: 150px;
+    height: 150px;
+    top: 80%;
+    left: 60%;
+    animation: floating 3s ease-in-out infinite;
+}
+
+.circle:nth-child(4) {
+    width: 120px;
+    height: 120px;
+    top: 20%;
+    left: 70%;
+    animation: floating 6s ease-in-out infinite reverse;
+}
+
+@keyframes floating {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(15px, -20px); }
+    100% { transform: translate(0, 0); }
+}
+
+/* ================= ANIMAÇÕES DE ENTRADA ================= */
+
+.profiss-img img,
+.profiss-tag,
+.profiss-name,
+.description,
+.btn {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.item.active .profiss-img img { animation: fadeUp .7s .2s forwards; }
+.item.active .profiss-tag { animation: fadeUp .7s .4s forwards; }
+.item.active .profiss-name { animation: fadeUp .7s .6s forwards; }
+.item.active .description { animation: fadeUp .7s .8s forwards; }
+.item.active .btn { animation: fadeUp .7s 1s forwards; }
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================================
+   RESPONSIVIDADE (MEDIA QUERIES)
+   ============================================================ */
+
+/* TABLETS (Até 992px) */
+@media (max-width: 992px) {
+    header {
+        padding: 15px 5%;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+    }
+
+    header nav ul {
+        gap: 20px;
+    }
+
+    .profiss-name {
+        font-size: 3rem;
+    }
+
+    .list {
+        width: 90%;
+    }
+}
+
+/* TABLETS MENORES E CELULARES (Até 768px) */
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto;
+    }
+
+    header {
+        position: relative;
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+        text-align: center;
+        background: rgba(15, 15, 30, 0.95);
+    }
+
+    header nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px 18px;
+    }
+
+    .container {
+        padding-top: 30px;
+        padding-bottom: 90px;
+        min-height: calc(100vh - 120px);
+    }
+
+    .list {
+        width: 92%;
+        min-height: auto;
+        padding: 20px 0;
+    }
+
+    .item {
+        position: relative;
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .profiss-img {
+        width: 100%;
+        height: auto;
+        max-height: 280px;
+    }
+
+    .profiss-img img {
+        max-width: 220px;
+        max-height: 250px;
+    }
+
+    .content {
+        width: 100%;
+        padding-right: 0;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profiss-name {
+        font-size: 2.2rem;
+    }
+
+    .description {
+        font-size: 0.98rem;
+        margin-bottom: 20px;
+    }
+
+    .arrows {
+        width: 100%;
+        padding: 0 10px;
+        top: 35%;
+    }
+
+    .arrow-btn {
+        width: 42px;
+        height: 42px;
+    }
+
+    .indicators {
+        bottom: 20px;
+    }
+
+    .numbers {
+        font-size: 1.8rem;
+    }
+}
+
+/* CELULARES PEQUENOS (Até 480px) */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    header nav ul {
+        gap: 10px 14px;
+        font-size: 0.9rem;
+    }
+
+    .profiss-name {
+        font-size: 1.8rem;
+    }
+
+    .profiss-tag {
+        font-size: 0.85rem;
+    }
+
+    .description {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 260px;
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
+}

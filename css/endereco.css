@@ -1,0 +1,372 @@
+/* ==========================================
+   RESPONSIVIDADE GERAL (Tablets e Celulares)
+   ========================================== */
+@media (max-width: 768px) {
+
+  /* 1. Header & Menu de Navegação */
+  header {
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+    text-align: center;
+  }
+
+  header nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* 2. Ajuste dos Grids de Cards (Serviços e Profissionais) */
+  .cards {
+    grid-template-columns: 1fr !important; /* Força 1 coluna no celular */
+    padding: 10px;
+    gap: 20px;
+  }
+
+  /* 3. Ajuste do Carrossel / Lista do index.html */
+  .list .item {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .profiss-img img {
+    max-width: 250px; /* Reduz tamanho da imagem no mobile */
+    height: auto;
+  }
+
+  .content {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  /* 4. Página de Endereço */
+  .location {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .map iframe {
+    width: 100%;
+    height: 300px;
+  }
+
+  /* 5. Ajustes de Tipografia */
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* ============================================================
+   ENDERECO.CSS - PÁGINA DE ENDEREÇO (CLÍNICA INCISUS)
+   Totalmente Responsivo (Desktop, Tablet e Mobile)
+   ============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #010115 20%, #0c0c40 100%);
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* ================= FUNDO TECNOLÓGICO ================= */
+
+.tech-circles {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.tech-circles::before {
+    content: "";
+    position: absolute;
+    width: 550px;
+    height: 550px;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 217, 255, .20), transparent 70%);
+    filter: blur(45px);
+    animation: pulse 6s infinite ease-in-out;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 217, 255, .18);
+    animation: floating 10s ease-in-out infinite;
+}
+
+.circle:nth-child(1) { width: 220px; height: 220px; left: 8%; top: 10%; }
+.circle:nth-child(2) { width: 320px; height: 320px; right: 8%; bottom: 8%; animation-duration: 12s; animation-direction: reverse; }
+.circle:nth-child(3) { width: 170px; height: 170px; top: 70%; left: 55%; animation-duration: 8s; }
+.circle:nth-child(4) { width: 120px; height: 120px; top: 18%; right: 18%; animation-duration: 11s; animation-direction: reverse; }
+
+/* ================= HEADER ================= */
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 22px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(1, 1, 20, .90);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+}
+
+.logo {
+    color: #fff;
+    text-decoration: none;
+    font-family: "Orbitron";
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+nav ul {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    transition: .35s;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: #00d9ff;
+    transition: .35s;
+}
+
+nav a:hover {
+    color: #00d9ff;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* ================= CONTAINER ================= */
+
+.page {
+    width: 85%;
+    max-width: 1200px;
+    margin: auto;
+    padding-top: 150px;
+    padding-bottom: 80px;
+}
+
+.page h1 {
+    text-align: center;
+    font-family: "Orbitron";
+    font-size: 3.8rem;
+    margin-bottom: 15px;
+    animation: fadeUp .8s forwards;
+}
+
+.location {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+/* ================= CARD INFORMAÇÕES ================= */
+
+.info {
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid rgba(0, 217, 255, .18);
+    border-radius: 25px;
+    padding: 35px;
+    backdrop-filter: blur(10px);
+    animation: fadeUp 1s forwards;
+}
+
+.info h2 {
+    font-family: "Orbitron";
+    color: #00d9ff;
+    margin-bottom: 25px;
+    font-size: 2rem;
+}
+
+.info p {
+    margin-bottom: 16px;
+    color: #d9d9d9;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.info a {
+    color: #00d9ff;
+    text-decoration: none;
+}
+
+.info a:hover {
+    text-decoration: underline;
+}
+
+/* ================= BOTÃO ================= */
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(90deg, #008e95, #295ca8);
+    transition: .35s;
+    font-weight: 600;
+    text-align: center;
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 217, 255, .4), 0 0 40px rgba(41, 92, 168, .3);
+}
+
+/* ================= MAPA ================= */
+
+.map {
+    border-radius: 25px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 217, 255, .18);
+    animation: fadeUp 1.2s forwards;
+}
+
+.map iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 450px;
+    border: none;
+}
+
+/* ================= ANIMAÇÕES ================= */
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(.9); opacity: .4; }
+    50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(.9); opacity: .4; }
+}
+
+@keyframes floating {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(15px, -20px); }
+    50% { transform: translate(-10px, -30px); }
+    75% { transform: translate(20px, 10px); }
+    100% { transform: translate(0, 0); }
+}
+
+/* ================= RESPONSIVIDADE ================= */
+
+@media (max-width: 992px) {
+    .location {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .map iframe {
+        height: 380px;
+        min-height: auto;
+    }
+}
+
+@media (max-width: 900px) {
+    header {
+        position: relative;
+        flex-direction: column;
+        gap: 15px;
+        padding: 18px;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px 20px;
+    }
+
+    .page {
+        width: 90%;
+        padding-top: 30px;
+    }
+
+    .page h1 {
+        font-size: 2.6rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .logo {
+        font-size: 1.6rem;
+    }
+
+    .page h1 {
+        font-size: 2rem;
+    }
+
+    .info {
+        padding: 25px 20px;
+    }
+
+    .info h2 {
+        font-size: 1.6rem;
+    }
+
+    .info p {
+        font-size: 0.95rem;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px 20px;
+    }
+
+    .map iframe {
+        height: 300px;
+    }
+}
