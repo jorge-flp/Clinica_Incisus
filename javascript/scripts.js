@@ -1,58 +1,26 @@
-const prevButton = document.getElementById('prev')
-const nextButton = document.getElementById('next')
-const items = document.querySelectorAll('.item')
-const dots = document.querySelectorAll('.dot')
-const numberIndicator = document.querySelector('.numbers')
-const list = document.querySelectorAll('.list')
+document.addEventListener("DOMContentLoaded", () => {
+    // Seleciona todos os cards dos doutores
+    const items = document.querySelectorAll('.item');
 
-let active = 0;
-const total = items.length
-let timer;
+    // Configuração do leitor de scroll (Intersection Observer)
+    const observerOptions = {
+        root: null,
+        threshold: 0.15 // Ativa o fade in quando 15% do elemento entra na tela
+    };
 
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Adiciona a classe que faz o elemento surgir suavemente
+                entry.target.classList.add('visible');
+                // Para de observar o item depois que ele já apareceu
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
 
-function update (direction){
-
-    document.querySelector('.item.active').classList.remove('active')
-    document.querySelector('.dot.active').classList.remove('active')
-
-
-
-    if(direction > 0){
-        active = active + 1
-
-        if(active === total){
-            active = 0
-        }
-    } 
-    else if(direction < 0){
-        active = active -1
-
-        if(active < 0){
-            active = total -1
-        }
-    }
-
-    items[active].classList.add('active')
-    dots[active].classList.add('active')
-
-    numberIndicator.textContent = String(active + 1).padStart(2, '0')
-
-}
-
-clearInterval(timer)
-time = setInterval(() => {
-        update(1)
-    }, 7000);
-
-
-
-
-
-
-prevButton.addEventListener('click', () => {
-    update(-1)
-})
-
-nextButton.addEventListener('click', () => {
-    update(1)
-})
+    // Aplica o observador em cada doutor da lista
+    items.forEach(item => {
+        observer.observe(item);
+    });
+});
