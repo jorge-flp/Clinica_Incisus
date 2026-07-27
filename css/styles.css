@@ -1,8 +1,3 @@
-/* ============================================================
-   STYLES.CSS - PÁGINA INICIAL / CARROSSEL (CLÍNICA INCISUS)
-   Totalmente Responsivo (Desktop, Tablet e Mobile)
-   ============================================================ */
-
 * {
     margin: 0;
     padding: 0;
@@ -11,42 +6,42 @@
     font-family: "Montserrat", sans-serif;
 }
 
-body {
-    background-color: #0f0f1e;
+/* Evita bordas brancas no bounce scroll do iOS */
+html, body {
+    background-color: #010115;
     color: #fff;
     font-size: 16px;
-    overflow-x: hidden;
+    width: 100%;
     min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: hidden;
 }
-
-/* ================= HEADER ================= */
 
 header {
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
-    padding: 20px 8%;
+    padding: 20px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    background: rgba(15, 15, 30, 0.85);
-    backdrop-filter: blur(12px);
+    background: rgba(1, 1, 21, 0.85);
+    backdrop-filter: blur(10px);
 }
 
 .logo {
     font-family: "Orbitron", sans-serif;
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 900;
     color: #fff;
     text-shadow: 0 10px 20px rgba(20, 82, 83, 0.5);
-    text-decoration: none;
 }
 
 header nav ul {
     display: flex;
-    gap: 32px;
+    gap: 30px;
 }
 
 header nav ul li {
@@ -62,8 +57,8 @@ header nav ul li::after {
     bottom: 0;
     width: 0;
     height: 2px;
-    background-color: #00d9ff;
-    transition: width 0.4s ease;
+    background-color: #045f62;
+    transition: width 0.6s ease;
 }
 
 header nav ul li:hover::after {
@@ -75,18 +70,15 @@ a {
     color: inherit;
 }
 
-/* ================= CONTAINER PRINCIPAL ================= */
-
 .container {
     min-height: 100vh;
-    width: 100%;
+    min-height: 100dvh;
     position: relative;
     background: linear-gradient(135deg, #010115 30%, #0c0c40 100%);
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 100px;
 }
 
 .container::before {
@@ -116,33 +108,25 @@ a {
     }
 }
 
-/* ================= LISTA & ITENS DO CARROSSEL ================= */
-
 .list {
     width: 85%;
     max-width: 1200px;
-    min-height: 70vh;
+    height: 100%;
     margin: 0 auto;
     position: relative;
-    display: flex;
-    align-items: center;
+    z-index: 10;
 }
 
 .item {
     position: absolute;
     inset: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-
     opacity: 0;
     visibility: hidden;
     transform: translateY(40px);
-
-    transition:
-        opacity .8s ease,
-        transform .8s ease,
-        visibility .8s;
+    transition: opacity .8s ease, transform .8s ease, visibility .8s;
 }
 
 .item.active {
@@ -158,31 +142,31 @@ a {
     justify-content: center;
     align-items: center;
     pointer-events: none;
-    z-index: 2;
 }
 
 .profiss-img img {
     max-width: 85%;
-    max-height: 70vh;
+    max-height: 75vh;
     object-fit: contain;
     filter: drop-shadow(0 0 30px rgba(0, 247, 255, .3));
     pointer-events: none;
 }
 
 .content {
-    width: 50%;
+    width: 55%;
+    padding-right: 40px;
     display: flex;
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
     position: relative;
-    z-index: 10;
+    z-index: 50;
 }
 
 .profiss-tag {
     font-size: 1rem;
     text-transform: uppercase;
-    color: #00d9ff;
+    color: #019094;
     font-weight: 600;
     letter-spacing: 2px;
     margin-bottom: 10px;
@@ -196,7 +180,7 @@ a {
 }
 
 .description {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: #b8b8d0;
     line-height: 1.6;
     margin-bottom: 30px;
@@ -207,7 +191,8 @@ a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 14px 32px;
+    width: 220px;
+    height: 50px;
     text-decoration: none;
     background: linear-gradient(90deg, #016e72, #2a5ca6);
     color: #fff;
@@ -224,12 +209,6 @@ a {
     box-shadow: 0 0 25px rgba(0, 247, 255, .45);
 }
 
-.btn:active {
-    transform: translateY(0) scale(0.98);
-}
-
-/* ================= SETAS E INDICADORES ================= */
-
 .arrows {
     position: absolute;
     width: 95%;
@@ -238,7 +217,7 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 50;
+    z-index: 100;
     pointer-events: none;
 }
 
@@ -250,17 +229,11 @@ a {
     border: 1px solid rgba(0, 247, 255, .3);
     cursor: pointer;
     pointer-events: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(5px);
-    transition: 0.3s;
 }
 
 .arrow-btn:hover {
     background-color: rgba(0, 247, 255, 0.2);
     border-color: #00f7ff;
-    transform: scale(1.1);
 }
 
 .indicators {
@@ -271,8 +244,8 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
-    z-index: 20;
+    gap: 10px;
+    z-index: 50;
 }
 
 .numbers {
@@ -292,73 +265,14 @@ a {
     height: 4px;
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 2px;
-    transition: 0.3s;
 }
 
 .dot.active {
     background-color: #00f7ff;
     box-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
-    width: 50px;
 }
 
-/* ================= CÍRCULOS DE FUNDO ================= */
-
-.tech-circle {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.circle {
-    position: absolute;
-    border-radius: 50%;
-    border: 1px solid rgba(0, 247, 255, 0.2);
-    pointer-events: none;
-}
-
-.circle:nth-child(1) {
-    width: 200px;
-    height: 200px;
-    top: 10%;
-    left: 10%;
-    animation: floating 8s ease-in-out infinite;
-}
-
-.circle:nth-child(2) {
-    width: 300px;
-    height: 300px;
-    top: 60%;
-    left: 80%;
-    animation: floating 10s ease-in-out infinite reverse;
-}
-
-.circle:nth-child(3) {
-    width: 150px;
-    height: 150px;
-    top: 80%;
-    left: 60%;
-    animation: floating 3s ease-in-out infinite;
-}
-
-.circle:nth-child(4) {
-    width: 120px;
-    height: 120px;
-    top: 20%;
-    left: 70%;
-    animation: floating 6s ease-in-out infinite reverse;
-}
-
-@keyframes floating {
-    0% { transform: translate(0, 0); }
-    50% { transform: translate(15px, -20px); }
-    100% { transform: translate(0, 0); }
-}
-
-/* ================= ANIMAÇÕES DE ENTRADA ================= */
-
+/* Animações dos Itens */
 .profiss-img img,
 .profiss-tag,
 .profiss-name,
@@ -377,7 +291,7 @@ a {
 @keyframes fadeUp {
     from {
         opacity: 0;
-        transform: translateY(40px);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
@@ -385,14 +299,14 @@ a {
     }
 }
 
-/* ============================================================
-   RESPONSIVIDADE (MEDIA QUERIES)
-   ============================================================ */
-
-/* TABLETS (Até 992px) */
-@media (max-width: 992px) {
+/* ====================================
+   RESPONSIVO (TELAS PEQUENAS E IPHONE)
+==================================== */
+@media (max-width: 768px) {
     header {
-        padding: 15px 5%;
+        flex-direction: column;
+        padding: 15px 20px;
+        gap: 10px;
     }
 
     .logo {
@@ -400,132 +314,85 @@ a {
     }
 
     header nav ul {
-        gap: 20px;
+        gap: 15px;
     }
 
-    .profiss-name {
-        font-size: 3rem;
+    header nav ul li a {
+        font-size: 0.85rem;
+    }
+
+    .container {
+        padding-top: 100px;
+        padding-bottom: 70px;
+        height: auto;
+        min-height: 100dvh;
     }
 
     .list {
         width: 90%;
     }
-}
-
-/* TABLETS MENORES E CELULARES (Até 768px) */
-@media (max-width: 768px) {
-    body {
-        overflow-y: auto;
-    }
-
-    header {
-        position: relative;
-        flex-direction: column;
-        gap: 15px;
-        padding: 15px;
-        text-align: center;
-        background: rgba(15, 15, 30, 0.95);
-    }
-
-    header nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px 18px;
-    }
-
-    .container {
-        padding-top: 30px;
-        padding-bottom: 90px;
-        min-height: calc(100vh - 120px);
-    }
-
-    .list {
-        width: 92%;
-        min-height: auto;
-        padding: 20px 0;
-    }
 
     .item {
-        position: relative;
         flex-direction: column;
+        justify-content: center;
         text-align: center;
-        gap: 20px;
+        position: relative;
     }
 
     .profiss-img {
         width: 100%;
-        height: auto;
-        max-height: 280px;
+        height: 220px;
+        margin-bottom: 10px;
     }
 
     .profiss-img img {
-        max-width: 220px;
-        max-height: 250px;
+        max-width: 100%;
+        max-height: 200px;
     }
 
     .content {
         width: 100%;
         padding-right: 0;
         align-items: center;
-        text-align: center;
     }
 
     .profiss-name {
-        font-size: 2.2rem;
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    .profiss-tag {
+        font-size: 0.85rem;
+        margin-bottom: 5px;
     }
 
     .description {
-        font-size: 0.98rem;
-        margin-bottom: 20px;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+        max-width: 100%;
+    }
+
+    .btn {
+        width: 190px;
+        height: 42px;
+        font-size: 0.9rem;
     }
 
     .arrows {
         width: 100%;
         padding: 0 10px;
-        top: 35%;
     }
 
     .arrow-btn {
-        width: 42px;
-        height: 42px;
+        width: 40px;
+        height: 40px;
     }
 
     .indicators {
-        bottom: 20px;
+        bottom: 15px;
     }
 
     .numbers {
-        font-size: 1.8rem;
-    }
-}
-
-/* CELULARES PEQUENOS (Até 480px) */
-@media (max-width: 480px) {
-    .logo {
         font-size: 1.5rem;
-    }
-
-    header nav ul {
-        gap: 10px 14px;
-        font-size: 0.9rem;
-    }
-
-    .profiss-name {
-        font-size: 1.8rem;
-    }
-
-    .profiss-tag {
-        font-size: 0.85rem;
-    }
-
-    .description {
-        font-size: 0.9rem;
-    }
-
-    .btn {
-        width: 100%;
-        max-width: 260px;
-        padding: 12px 20px;
-        font-size: 0.95rem;
     }
 }
