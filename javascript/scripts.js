@@ -28,6 +28,42 @@ document.addEventListener("DOMContentLoaded", () => {
 const menuToggle = document.getElementById("menu-toggle");
 const menu = document.getElementById("menu");
 
-menuToggle.addEventListener("click", () => {
+// Abre e fecha o menu
+menuToggle.addEventListener("click", (e) => {
+
+    e.stopPropagation();
+
     menu.classList.toggle("active");
+
+    if(menu.classList.contains("active")){
+        menuToggle.innerHTML = "✕";
+    }else{
+        menuToggle.innerHTML = "☰";
+    }
+
+});
+
+// Fecha ao clicar fora
+document.addEventListener("click", () => {
+
+    menu.classList.remove("active");
+    menuToggle.innerHTML = "☰";
+
+});
+
+// Impede que clicar dentro do menu feche ele
+menu.addEventListener("click", (e)=>{
+    e.stopPropagation();
+});
+
+// Fecha ao clicar em qualquer link
+document.querySelectorAll("#menu a").forEach(link=>{
+
+    link.addEventListener("click",()=>{
+
+        menu.classList.remove("active");
+        menuToggle.innerHTML="☰";
+
+    });
+
 });

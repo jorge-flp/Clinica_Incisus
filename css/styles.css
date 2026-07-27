@@ -395,3 +395,16 @@ nav a:hover{
     }
 
 }
+
+nav{
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-20px);
+    transition:.35s ease;
+}
+
+nav.active{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
